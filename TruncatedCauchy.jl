@@ -6,7 +6,7 @@ using HCubature
 using Random
 
 import Base: length
-import Distributions: sqmahal, pdf, rand
+import Distributions: sqmahal, rand
 
 abstract type AbstractTruncatedCauchy <: ContinuousMultivariateDistribution end
 
@@ -36,7 +36,7 @@ length(d::GenericTruncatedCauchy) = d.dim
 sqmahal(d::GenericTruncatedCauchy, x::AbstractVector{<:Real}) = invquad(d.Σ, x - d.μ)
 inlimits(d::GenericTruncatedCauchy, x::AbstractVector{<:Real}) = all(x .> d.μ .- d.limit) && all(x .< d.μ .+ d.limit) ? true : false
 
-function pdf(d::MultivariateDistribution, X::AbstractVector)
+function pdf(d::AbstractTruncatedCauchy, X::AbstractVector)
     length(X) == length(d) ||
         throw(DimensionMismatch("Inconsistent array dimensions."))
     _pdf(d, X)
