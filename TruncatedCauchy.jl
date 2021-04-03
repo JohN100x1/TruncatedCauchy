@@ -6,7 +6,7 @@ using HCubature
 using Random
 
 import Base: length
-import Distributions: sqmahal, rand
+import Distributions: sqmahal, rand, pdf
 
 abstract type AbstractTruncatedCauchy <: ContinuousMultivariateDistribution end
 
