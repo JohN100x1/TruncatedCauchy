@@ -1,8 +1,3 @@
-using LinearAlgebra
-using SpecialFunctions
-include("lnNpr.jl")
-include("lnPhi.jl")
-
 function cholperm(Sig, l, u)
     #  Computes permuted lower Cholesky factor L for Sig
     #  by permuting integration limit vectors l & u.
